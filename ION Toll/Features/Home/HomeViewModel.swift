@@ -9,12 +9,15 @@ final class HomeViewModel: NSObject, CLLocationManagerDelegate {
     var balance: Double = 0
     var showCompleteProfilePrompt = false
     var locationString = "Mendapatkan lokasi..."
+    var newsItems: [NewsItem] = []
 
     let sessionManager: SessionManager
     private let locationManager = CLLocationManager()
+    private let newsRepository: NewsRepositoryProtocol
 
-    init(sessionManager: SessionManager) {
+    init(sessionManager: SessionManager, newsRepository: NewsRepositoryProtocol = NewsRepository()) {
         self.sessionManager = sessionManager
+        self.newsRepository = newsRepository
         super.init()
         locationManager.delegate = self
         checkProfileCompletion()
@@ -54,7 +57,15 @@ final class HomeViewModel: NSObject, CLLocationManagerDelegate {
     }
 
     func loadHomeData() async {
-        // Future: fetch wallet balance, services, etc.
+        await loadNews()
+    }
+
+    func loadNews() async {
+        do {
+            newsItems = try await newsRepository.getList(q: "", page: 1, perPage: 5)
+        } catch {
+            newsItems = []
+        }
     }
 
     // MARK: - Location

@@ -30,6 +30,10 @@ enum AppRoute: Hashable {
 
     // Notification
     case notificationList
+
+    // News
+    case newsList
+    case newsDetail(id: String)
 }
 
 extension AppRoute {
@@ -53,6 +57,8 @@ extension AppRoute {
         case (.cctvDetail(let a1, let b1), .cctvDetail(let a2, let b2)): a1 == a2 && b1 == b2
         case (.restAreaList, .restAreaList): true
         case (.notificationList, .notificationList): true
+        case (.newsList, .newsList): true
+        case (.newsDetail(let a), .newsDetail(let b)): a == b
         default: false
         }
     }
@@ -77,6 +83,8 @@ extension AppRoute {
         case .cctvDetail(let id, _): hasher.combine("cctvDetail"); hasher.combine(id)
         case .restAreaList: hasher.combine("restAreaList")
         case .notificationList: hasher.combine("notificationList")
+        case .newsList: hasher.combine("newsList")
+        case .newsDetail(let id): hasher.combine("newsDetail"); hasher.combine(id)
         }
     }
 }

@@ -8,6 +8,8 @@ struct HomeView: View {
     @State private var navigateToRestArea = false
     @State private var navigateToProfile = false
     @State private var navigateToNotification = false
+    @State private var navigateToNews = false
+    @State private var navigateToNewsDetail: NewsItem?
     @State private var scrollOffset: CGFloat = 0
     let router: AppRouter?
 
@@ -73,6 +75,12 @@ struct HomeView: View {
         .navigationDestination(isPresented: $navigateToNotification) {
             NotificationView()
         }
+        .navigationDestination(isPresented: $navigateToNews) {
+            NewsListView()
+        }
+        .navigationDestination(item: $navigateToNewsDetail) { item in
+            NewsDetailView(newsId: item.id)
+        }
         .onAppear {
             if let router, router.shouldAutoShowPinSetup {
                 router.shouldAutoShowPinSetup = false
@@ -80,6 +88,9 @@ struct HomeView: View {
                     showPinSetup = true
                 }
             }
+        }
+        .task {
+            await viewModel.loadHomeData()
         }
     }
 
@@ -387,71 +398,96 @@ struct HomeView: View {
 
     private var newsSection: some View {
         VStack(spacing: 12) {
-            sectionHeader(title: "ION News", action: "Lihat semua")
+            sectionHeader(title: "ION News", action: "Lihat semua") {
+                Haptic.light()
+                navigateToNews = true
+            }
 
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: 12) {
-                    newsCard(title: "Jakarta - Bandung", subtitle: "Perjalanan lancar via Tol Cipularang", tag: "Baru")
-                        .staggeredFadeIn(index: 0, baseDelay: 0.08)
-                    newsCard(title: "Bandung - Semarang", subtitle: "Melewati Tol Trans Jawa", tag: "Populer")
-                        .staggeredFadeIn(index: 1, baseDelay: 0.08)
-                    newsCard(title: "Surabaya - Malang", subtitle: "Via Tol Waru - Krian", tag: "Baru")
-                        .staggeredFadeIn(index: 2, baseDelay: 0.08)
-                    newsCard(title: "Jakarta - Cirebon", subtitle: "Tol Tangerang - Merak", tag: "Promo")
-                        .staggeredFadeIn(index: 3, baseDelay: 0.08)
+            if viewModel.newsItems.isEmpty {
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing: 12) {
+                        ForEach(0..<3, id: \.self) { index in
+                            newsShimmerCard
+                                .staggeredFadeIn(index: index, baseDelay: 0.08)
+                        }
+                    }
+                    .padding(.horizontal, 20)
                 }
-                .padding(.horizontal, 20)
+            } else {
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing: 12) {
+                        ForEach(Array(viewModel.newsItems.enumerated()), id: \.element.id) { index, item in
+                            newsCard(item: item)
+                                .staggeredFadeIn(index: index, baseDelay: 0.08)
+                                .onTapGesture {
+                                    Haptic.light()
+                                    navigateToNewsDetail = item
+                                }
+                        }
+                    }
+                    .padding(.horizontal, 20)
+                }
             }
         }
     }
 
-    private func newsCard(title: String, subtitle: String, tag: String) -> some View {
+    private func newsCard(item: NewsItem) -> some View {
         ZStack(alignment: .bottom) {
-            Image("Banner")
-                .resizable()
-                .scaledToFill()
-                .frame(width: 250, height: 187)
-                .clipped()
+            AsyncImage(url: URL(string: item.imageUrl)) { phase in
+                switch phase {
+                case .success(let image):
+                    image
+                        .resizable()
+                        .scaledToFill()
+                case .failure:
+                    Image("Banner")
+                        .resizable()
+                        .scaledToFill()
+                default:
+                    Rectangle()
+                        .fill(Color(.systemGray6))
+                }
+            }
+            .frame(width: 250, height: 187)
+            .clipped()
 
             LinearGradient(colors: [.clear, .black.opacity(0.7)], startPoint: .top, endPoint: .bottom)
                 .frame(height: 80)
                 .frame(maxHeight: .infinity, alignment: .bottom)
 
             VStack(alignment: .leading, spacing: 2) {
-                Text(title)
+                Text(item.title)
                     .font(.ionSubheadline.bold())
                     .foregroundStyle(.white)
-                    .lineLimit(1)
-                Text(subtitle)
+                    .lineLimit(2)
+                Text(item.formattedDate)
                     .font(.ionCaption)
                     .foregroundStyle(.white.opacity(0.85))
                     .lineLimit(1)
             }
             .padding(10)
             .frame(maxWidth: .infinity, alignment: .leading)
-
-            Text(tag)
-                .font(.system(size: 10, weight: .bold))
-                .foregroundStyle(.white)
-                .padding(.horizontal, 8)
-                .padding(.vertical, 3)
-                .background(Color.brandPrimary.opacity(0.9), in: .rect(cornerRadius: 6))
-                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
-                .padding(8)
         }
         .frame(width: 250, height: 187)
         .clipShape(RoundedRectangle(cornerRadius: 16))
         .shadow(color: .black.opacity(0.06), radius: 4, y: 2)
     }
 
+    private var newsShimmerCard: some View {
+        RoundedRectangle(cornerRadius: 16)
+            .fill(Color(.systemGray6))
+            .frame(width: 250, height: 187)
+            .shadow(color: .black.opacity(0.06), radius: 4, y: 2)
+    }
+
     // MARK: - Section Header
 
-    private func sectionHeader(title: String, action: String) -> some View {
+    private func sectionHeader(title: String, action: String, onAction: @escaping () -> Void = {}) -> some View {
         HStack {
             Text(title)
                 .font(.ionHeadline.bold())
             Spacer()
-            Button {} label: {
+            Button(action: onAction) {
                 Text(action)
                     .font(.ionCaption.bold())
                     .foregroundStyle(Color.brandPrimary)
