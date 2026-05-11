@@ -17,6 +17,8 @@
 	<string>900699457418-akeul9dcvujas7cpl095d4vkv3rikpbe.apps.googleusercontent.com</string>
 	<key>NSCameraUsageDescription</key>
 	<string>ION Toll membutuhkan akses kamera untuk mengambil foto profil.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>ION Toll membutuhkan akses lokasi untuk menampilkan rest area terdekat.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Geist-Regular.ttf</string>

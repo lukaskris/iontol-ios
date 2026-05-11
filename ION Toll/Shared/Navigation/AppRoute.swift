@@ -24,6 +24,12 @@ enum AppRoute: Hashable {
     case segmentList
     case segmentDetail(segmentId: String, segmentName: String)
     case cctvDetail(cctvId: String, cctvName: String)
+
+    // Rest Area
+    case restAreaList
+
+    // Notification
+    case notificationList
 }
 
 extension AppRoute {
@@ -45,6 +51,8 @@ extension AppRoute {
         case (.segmentList, .segmentList): true
         case (.segmentDetail(let a1, let b1), .segmentDetail(let a2, let b2)): a1 == a2 && b1 == b2
         case (.cctvDetail(let a1, let b1), .cctvDetail(let a2, let b2)): a1 == a2 && b1 == b2
+        case (.restAreaList, .restAreaList): true
+        case (.notificationList, .notificationList): true
         default: false
         }
     }
@@ -67,6 +75,8 @@ extension AppRoute {
         case .segmentList: hasher.combine("segmentList")
         case .segmentDetail(let id, _): hasher.combine("segmentDetail"); hasher.combine(id)
         case .cctvDetail(let id, _): hasher.combine("cctvDetail"); hasher.combine(id)
+        case .restAreaList: hasher.combine("restAreaList")
+        case .notificationList: hasher.combine("notificationList")
         }
     }
 }

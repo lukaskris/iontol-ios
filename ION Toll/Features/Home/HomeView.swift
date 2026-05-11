@@ -5,7 +5,9 @@ struct HomeView: View {
     @State private var showPinSetup = false
     @State private var isTrafficExpanded = false
     @State private var navigateToCctv = false
+    @State private var navigateToRestArea = false
     @State private var navigateToProfile = false
+    @State private var navigateToNotification = false
     @State private var scrollOffset: CGFloat = 0
     let router: AppRouter?
 
@@ -59,11 +61,17 @@ struct HomeView: View {
         .navigationDestination(isPresented: $navigateToCctv) {
             CctvView(sessionManager: viewModel.sessionManager)
         }
+        .navigationDestination(isPresented: $navigateToRestArea) {
+            RestAreaListView()
+        }
         .navigationDestination(isPresented: $navigateToProfile) {
             ProfileView(
                 sessionManager: viewModel.sessionManager,
                 router: router ?? AppRouter(sessionManager: viewModel.sessionManager)
             )
+        }
+        .navigationDestination(isPresented: $navigateToNotification) {
+            NotificationView()
         }
         .onAppear {
             if let router, router.shouldAutoShowPinSetup {
@@ -134,7 +142,10 @@ struct HomeView: View {
             Spacer()
 
             HStack(spacing: 8) {
-                Button {} label: {
+                Button {
+                    Haptic.light()
+                    navigateToNotification = true
+                } label: {
                     Image(systemName: "bell.fill")
                         .foregroundStyle(.white)
                         .frame(width: 40, height: 40)
@@ -261,6 +272,8 @@ struct HomeView: View {
         switch title {
         case "CCTV":
             navigateToCctv = true
+        case "Rest Area":
+            navigateToRestArea = true
         default:
             break
         }
