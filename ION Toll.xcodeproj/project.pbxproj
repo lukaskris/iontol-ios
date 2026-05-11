@@ -6,13 +6,37 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		BC681DFF2FAA435B00CD3F5F /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = BC681DFE2FAA435B00CD3F5F /* GoogleSignIn */; };
+		BC681E012FAA435B00CD3F5F /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = BC681E002FAA435B00CD3F5F /* GoogleSignInSwift */; };
+		BC681E042FAA435B00CD3F5F /* Pulse in Frameworks */ = {isa = PBXBuildFile; productRef = BC681E032FAA435B00CD3F5F /* Pulse */; };
+		BC681E062FAA435B00CD3F5F /* PulseUI in Frameworks */ = {isa = PBXBuildFile; productRef = BC681E052FAA435B00CD3F5F /* PulseUI */; };
+		BC68225F2FAB69CC00CD3F5F /* FirebaseAppDistribution-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = BC68225E2FAB69CC00CD3F5F /* FirebaseAppDistribution-Beta */; };
+		BC6822612FAB69CC00CD3F5F /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = BC6822602FAB69CC00CD3F5F /* FirebaseCore */; };
+		BC6822632FAB69CC00CD3F5F /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = BC6822622FAB69CC00CD3F5F /* FirebaseCrashlytics */; };
+		BC6822652FAB69CC00CD3F5F /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = BC6822642FAB69CC00CD3F5F /* FirebaseMessaging */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		BC34A4E02F8A978100DF8C00 /* ION Toll.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ION Toll.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		BC34B0012F8A999900DF8C00 /* Exceptions for "ION Toll" folder in "ION Toll" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = BC34A4DF2F8A978100DF8C00 /* ION Toll */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		BC34A4E22F8A978100DF8C00 /* ION Toll */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				BC34B0012F8A999900DF8C00 /* Exceptions for "ION Toll" folder in "ION Toll" target */,
+			);
 			path = "ION Toll";
 			sourceTree = "<group>";
 		};
@@ -23,6 +47,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC6822652FAB69CC00CD3F5F /* FirebaseMessaging in Frameworks */,
+				BC681DFF2FAA435B00CD3F5F /* GoogleSignIn in Frameworks */,
+				BC681E012FAA435B00CD3F5F /* GoogleSignInSwift in Frameworks */,
+				BC68225F2FAB69CC00CD3F5F /* FirebaseAppDistribution-Beta in Frameworks */,
+				BC6822632FAB69CC00CD3F5F /* FirebaseCrashlytics in Frameworks */,
+				BC681E042FAA435B00CD3F5F /* Pulse in Frameworks */,
+				BC6822612FAB69CC00CD3F5F /* FirebaseCore in Frameworks */,
+				BC681E062FAA435B00CD3F5F /* PulseUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +97,14 @@
 			);
 			name = "ION Toll";
 			packageProductDependencies = (
+				BC681DFE2FAA435B00CD3F5F /* GoogleSignIn */,
+				BC681E002FAA435B00CD3F5F /* GoogleSignInSwift */,
+				BC681E032FAA435B00CD3F5F /* Pulse */,
+				BC681E052FAA435B00CD3F5F /* PulseUI */,
+				BC68225E2FAB69CC00CD3F5F /* FirebaseAppDistribution-Beta */,
+				BC6822602FAB69CC00CD3F5F /* FirebaseCore */,
+				BC6822622FAB69CC00CD3F5F /* FirebaseCrashlytics */,
+				BC6822642FAB69CC00CD3F5F /* FirebaseMessaging */,
 			);
 			productName = "ION Toll";
 			productReference = BC34A4E02F8A978100DF8C00 /* ION Toll.app */;
@@ -94,6 +134,11 @@
 			);
 			mainGroup = BC34A4D72F8A978100DF8C00;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				BC681DFD2FAA435B00CD3F5F /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
+				BC681E022FAA435B00CD3F5F /* XCRemoteSwiftPackageReference "Pulse" */,
+				BC68225D2FAB69CC00CD3F5F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = BC34A4E12F8A978100DF8C00 /* Products */;
 			projectDirPath = "";
@@ -256,6 +301,8 @@
 				DEVELOPMENT_TEAM = L67JU28CAW;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "ION Toll/Info.plist";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.navigation";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -266,7 +313,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.rapier.app.iontoll.ION-Toll";
+				PRODUCT_BUNDLE_IDENTIFIER = com.rapier.app.iontoll;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
@@ -288,6 +335,8 @@
 				DEVELOPMENT_TEAM = L67JU28CAW;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "ION Toll/Info.plist";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.navigation";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -298,7 +347,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.rapier.app.iontoll.ION-Toll";
+				PRODUCT_BUNDLE_IDENTIFIER = com.rapier.app.iontoll;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
@@ -332,6 +381,76 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		BC681DFD2FAA435B00CD3F5F /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.1.0;
+			};
+		};
+		BC681E022FAA435B00CD3F5F /* XCRemoteSwiftPackageReference "Pulse" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kean/Pulse";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
+		BC68225D2FAB69CC00CD3F5F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 12.13.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		BC681DFE2FAA435B00CD3F5F /* GoogleSignIn */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BC681DFD2FAA435B00CD3F5F /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignIn;
+		};
+		BC681E002FAA435B00CD3F5F /* GoogleSignInSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BC681DFD2FAA435B00CD3F5F /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignInSwift;
+		};
+		BC681E032FAA435B00CD3F5F /* Pulse */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BC681E022FAA435B00CD3F5F /* XCRemoteSwiftPackageReference "Pulse" */;
+			productName = Pulse;
+		};
+		BC681E052FAA435B00CD3F5F /* PulseUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BC681E022FAA435B00CD3F5F /* XCRemoteSwiftPackageReference "Pulse" */;
+			productName = PulseUI;
+		};
+		BC68225E2FAB69CC00CD3F5F /* FirebaseAppDistribution-Beta */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BC68225D2FAB69CC00CD3F5F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseAppDistribution-Beta";
+		};
+		BC6822602FAB69CC00CD3F5F /* FirebaseCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BC68225D2FAB69CC00CD3F5F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCore;
+		};
+		BC6822622FAB69CC00CD3F5F /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BC68225D2FAB69CC00CD3F5F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
+		};
+		BC6822642FAB69CC00CD3F5F /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BC68225D2FAB69CC00CD3F5F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = BC34A4D82F8A978100DF8C00 /* Project object */;
 }

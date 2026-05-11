@@ -1,17 +1,15 @@
-//
-//  ION_TollApp.swift
-//  ION Toll
-//
-//  Created by install on 11/04/26.
-//
-
 import SwiftUI
+import FirebaseCore
 
 @main
 struct ION_TollApp: App {
+    init() {
+        FirebaseApp.configure()
+    }
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            RootView()
         }
     }
 }

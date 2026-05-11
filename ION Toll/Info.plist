@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.900699457418-akeul9dcvujas7cpl095d4vkv3rikpbe</string>
+			</array>
+		</dict>
+	</array>
+	<key>GIDClientID</key>
+	<string>900699457418-akeul9dcvujas7cpl095d4vkv3rikpbe.apps.googleusercontent.com</string>
+	<key>NSCameraUsageDescription</key>
+	<string>ION Toll membutuhkan akses kamera untuk mengambil foto profil.</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Geist-Regular.ttf</string>
+		<string>Geist-Medium.ttf</string>
+		<string>Geist-SemiBold.ttf</string>
+		<string>Geist-Bold.ttf</string>
+	</array>
+</dict>
+</plist>
