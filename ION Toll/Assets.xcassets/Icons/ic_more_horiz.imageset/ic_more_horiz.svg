@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28">
+  <defs>
+    <linearGradient id="grad1" x1="6.222" y1="0" x2="6.222" y2="12.444" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#A652FF"/>
+      <stop offset="1" stop-color="#4E1090"/>
+    </linearGradient>
+    <linearGradient id="grad2" x1="21.778" y1="0" x2="21.778" y2="12.444" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#A652FF"/>
+      <stop offset="1" stop-color="#4E1090"/>
+    </linearGradient>
+    <linearGradient id="grad3" x1="6.222" y1="15.555" x2="6.222" y2="28" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#A652FF"/>
+      <stop offset="1" stop-color="#4E1090"/>
+    </linearGradient>
+    <linearGradient id="grad4" x1="21.778" y1="15.555" x2="21.778" y2="28" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#A652FF"/>
+      <stop offset="1" stop-color="#4E1090"/>
+    </linearGradient>
+  </defs>
+  <path fill="url(#grad1)" d="M2,0L10.444,0A2,2 0,0 1,12.444 2L12.444,10.444A2,2 0,0 1,10.444 12.444L2,12.444A2,2 0,0 1,0 10.444L0,2A2,2 0,0 1,2 0z"/>
+  <path fill="url(#grad2)" d="M17.555,0L26,0A2,2 0,0 1,28 2L28,10.444A2,2 0,0 1,26 12.444L17.555,12.444A2,2 0,0 1,15.555 10.444L15.555,2A2,2 0,0 1,17.555 0z"/>
+  <path fill="url(#grad3)" d="M2,15.555L10.444,15.555A2,2 0,0 1,12.444 17.555L12.444,26A2,2 0,0 1,10.444 28L2,28A2,2 0,0 1,0 26L0,17.555A2,2 0,0 1,2 15.555z"/>
+  <path fill="url(#grad4)" d="M17.555,15.555L26,15.555A2,2 0,0 1,28 17.555L28,26A2,2 0,0 1,26 28L17.555,28A2,2 0,0 1,15.555 26L15.555,17.555A2,2 0,0 1,17.555 15.555z"/>
+</svg>
