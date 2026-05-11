@@ -111,7 +111,7 @@ final class AuthApiService: AuthApiServiceProtocol {
 
     func changePassword(newPassword: String, confirmPassword: String, token: String) async throws -> BaseResponse<String> {
         try await client.request(
-            .post("auth/change-password", body: ChangePasswordRequest(newPassword: newPassword, confirmPassword: confirmPassword)),
+            .put("auth/change-password", body: ChangePasswordRequest(newPassword: newPassword, confirmPassword: confirmPassword)),
             token: token
         )
     }
